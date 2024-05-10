@@ -5,8 +5,10 @@ Rails.application.routes.draw do
 
 
   root "welcome#index"
+  resources :users, only: [:show, :create] do
+    get '/discover', to: 'discover#show'
+    get '/movies', to: 'movies#show'
+  end
   get '/register', to: 'users#new', as: 'register_user'
 
-  resources :users, only: [:show, :create] do
-  end
 end
